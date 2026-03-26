@@ -60,7 +60,7 @@ const Home = () => {
           >
             <span className="text-xs uppercase tracking-[0.4em] font-semibold mb-6 block">Contemporary Collection</span>
             <h1 className="text-6xl md:text-8xl font-serif leading-tight mb-8">
-              Discover Original Art That <span className="italic">Transforms</span> Your Space
+              Discover Art That <span className="italic">Transforms</span> Your Space
             </h1>
             <p className="text-lg text-white/80 mb-10 font-light leading-relaxed">
               Browse curated original paintings from a refined digital gallery and collect unique works that bring character, emotion, and beauty into your home.
