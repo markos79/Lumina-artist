@@ -1,0 +1,78 @@
+{
+  "entities": {
+    "artwork": {
+      "title": "Artwork",
+      "description": "An original painting in the gallery.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "The title of the painting." },
+        "slug": { "type": "string", "description": "URL-friendly title." },
+        "artist": { "type": "string", "description": "Name of the artist." },
+        "price": { "type": "number", "description": "Price in USD." },
+        "image": { "type": "string", "description": "Main image URL." },
+        "description": { "type": "string", "description": "Story behind the artwork." },
+        "category": { "type": "string", "description": "Abstract, Landscape, etc." },
+        "style": { "type": "string", "description": "Contemporary, etc." },
+        "colors": { "type": "array", "items": { "type": "string" } },
+        "width": { "type": "number" },
+        "height": { "type": "number" },
+        "medium": { "type": "string" },
+        "year": { "type": "integer" },
+        "status": { "type": "string", "enum": ["available", "sold", "reserved"] },
+        "featured": { "type": "boolean" },
+        "stock": { "type": "integer" }
+      },
+      "required": ["title", "slug", "artist", "price", "image", "status"]
+    },
+    "user": {
+      "title": "User",
+      "description": "A registered user or admin.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "user"] },
+        "preferences": {
+          "type": "object",
+          "properties": {
+            "styles": { "type": "array", "items": { "type": "string" } },
+            "colors": { "type": "array", "items": { "type": "string" } },
+            "moods": { "type": "array", "items": { "type": "string" } },
+            "budget": { "type": "string" }
+          }
+        }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "order": {
+      "title": "Order",
+      "description": "A purchase order.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "items": { "type": "array", "items": { "type": "object" } },
+        "total": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "completed", "shipped"] },
+        "shippingAddress": { "type": "object" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "items", "total", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "artworks": {
+      "schema": "artwork",
+      "description": "Collection of all paintings."
+    },
+    "users": {
+      "schema": "user",
+      "description": "Collection of user profiles."
+    },
+    "orders": {
+      "schema": "order",
+      "description": "Collection of purchase orders."
+    }
+  }
+}
